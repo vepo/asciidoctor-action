@@ -1,6 +1,6 @@
 FROM ruby:2-alpine
 
-RUN gem install asciidoctor asciidoctor-pdf asciidoctor-diagram rouge
+RUN gem install asciidoctor asciidoctor-pdf asciidoctor-diagram asciidoctor-epub3 rouge
 
 RUN apk add --no-cache \
       chromium \

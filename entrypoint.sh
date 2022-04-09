@@ -29,6 +29,8 @@ read -r INPUT_FILES <<<$*
 ASCIIDOCTOR=asciidoctor
 if [[ "pdf" = $OUTPUT_FORMAT ]]; then
   ASCIIDOCTOR=asciidoctor-pdf
+elif [[ "epub" == $OUTPUT_FORMAT ]]; then
+  ASCIIDOCTOR=asciidoctor-epub3
 fi
 
 if [[ -z $INPUT_FILES ]]; then
