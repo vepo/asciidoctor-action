@@ -11,7 +11,7 @@ inputs:
     description: Files to compile, can include * and ** globs.
     required: true
   format:
-    description: The format to compile to, `pdf`, `epub` or blank.
+    description: The format to compile to, `pdf`, `epub`, `kf8` or blank.
     required: false
     default: ''
   asciidoctor-args:

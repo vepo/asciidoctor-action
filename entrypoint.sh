@@ -30,7 +30,9 @@ ASCIIDOCTOR=asciidoctor
 if [[ "pdf" = $OUTPUT_FORMAT ]]; then
   ASCIIDOCTOR=asciidoctor-pdf
 elif [[ "epub" == $OUTPUT_FORMAT ]]; then
-  ASCIIDOCTOR=asciidoctor-epub3
+  ASCIIDOCTOR=asciidoctor-epub3 -a ebook-validate
+elif [[ "kf8" == $OUTPUT_FORMAT ]]; then
+  ASCIIDOCTOR=asciidoctor-epub3 -a ebook-validate -a ebook-format=kf8 
 fi
 
 if [[ -z $INPUT_FILES ]]; then
