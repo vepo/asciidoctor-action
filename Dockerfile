@@ -1,4 +1,4 @@
-FROM ruby:2-alpine
+FROM ruby:3-alpine
 
 # download kindlegen and install it to /usr/bin
 RUN wget https://github.com/zzet/fp-docker/raw/master/kindlegen_linux_2.6_i386_v2_9.tar.gz -O - | tar -xzf - -C /usr/bin kindlegen
