@@ -56,7 +56,7 @@ if [[ "pdf" = $OUTPUT_FORMAT ]]; then
     FILENAME=$(basename $input_file)
     OUTPUT_PDF="${DIRNAME/asciidoc-html/asciidoc-out}/${FILENAME/.html/.pdf}"
     echo "Convert ${input_file} to $OUTPUT_PDF"
-    wkhtmltopdf $input_file $OUTPUT_PDF
+    wkhtmltopdf --enable-local-file-access $input_file $OUTPUT_PDF
   done
   
 else
