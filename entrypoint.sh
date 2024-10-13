@@ -29,7 +29,7 @@ read -r INPUT_FILES <<<$*
 ASCIIDOCTOR=asciidoctor
 if [[ "pdf" = $OUTPUT_FORMAT ]]; then
 #  ASCIIDOCTOR=asciidoctor-pdf
-  ASCIIDOCTOR=asciidoctor -b xhtml5
+  ASCIIDOCTOR="asciidoctor -b xhtml5"
 elif [[ "epub" == $OUTPUT_FORMAT ]]; then
   ASCIIDOCTOR=asciidoctor-epub3
 elif [[ "kf8" == $OUTPUT_FORMAT ]]; then
