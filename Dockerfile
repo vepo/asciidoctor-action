@@ -21,7 +21,7 @@ RUN apk add --no-cache \
       libx11 \
       libxrender \
       libxext \
-      libssl1.1 \
+      libssl3 \
       fontconfig \
       ttf-droid \
       ttf-liberation
