@@ -1,4 +1,4 @@
-FROM surnet/alpine-wkhtmltopdf:3.16.2-0.12.6-full as wkhtmltopdf
+FROM surnet/alpine-wkhtmltopdf:3.20.2-0.12.6-full as wkhtmltopdf
 FROM ruby:3-alpine
 
 # download kindlegen and install it to /usr/bin
