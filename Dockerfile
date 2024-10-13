@@ -21,13 +21,13 @@ RUN apk add --no-cache \
       libx11 \
       libxrender \
       libxext \
-      libssl3 \
+      openssl-dev \
       fontconfig \
       ttf-droid \
       ttf-liberation
 
 
-COPY --from=wkhtmltopdf /bin/wkhtmltopdf /bin/libwkhtmltox.so /bin/
+COPY --from=wkhtmltopdf /bin/wkhtmltopdf /bin/
 
 RUN mkdir /mermaid
 
