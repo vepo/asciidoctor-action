@@ -17,7 +17,7 @@ RUN apk add --no-cache \
       nodejs \
       npm \
       bash \
-      libstdc++
+      libstdc++ \
       libx11 \
       libxrender \
       libxext \
