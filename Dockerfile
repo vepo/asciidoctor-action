@@ -23,7 +23,7 @@ RUN apk add --no-cache \
       libxext \
       fontconfig \
       ttf-droid \
-      openssl1.1-compat \
+      openssl \
       ttf-liberation
 
 COPY --from=wkhtmltopdf /bin/wkhtmltopdf /bin/libwkhtmltox.so /bin/
