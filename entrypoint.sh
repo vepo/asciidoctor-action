@@ -28,8 +28,7 @@ read -r INPUT_FILES <<<$*
 
 ASCIIDOCTOR=asciidoctor
 if [[ "pdf" = $OUTPUT_FORMAT ]]; then
-#  ASCIIDOCTOR=asciidoctor-pdf
-  ASCIIDOCTOR="asciidoctor -b xhtml5"
+  ASCIIDOCTOR=asciidoctor-pdf
 elif [[ "epub" == $OUTPUT_FORMAT ]]; then
   ASCIIDOCTOR=asciidoctor-epub3
 elif [[ "kf8" == $OUTPUT_FORMAT ]]; then
@@ -41,32 +40,12 @@ if [[ -z $INPUT_FILES ]]; then
   exit $EX_USAGE
 fi
 
-if [[ "pdf" = $OUTPUT_FORMAT ]]; then
-  COMMAND=$(echo "$ASCIIDOCTOR -R . -D $GITHUB_WORKSPACE/asciidoc-html -r asciidoctor-diagram -a mermaid-puppeteer-config=/mermaid/puppeteer-config.json -a source-highlighter@=rouge" $ASCIIDOCTOR_ARGS $INPUT_FILES)
-  echo "Running '$COMMAND'"
-  
-  # TEST env variable indicates we should be in testing mode (below).
-  mkdir $GITHUB_WORKSPACE/asciidoc-html
-  eval $COMMAND
-  echo "Converting HTML to PDF"
-  mkdir $GITHUB_WORKSPACE/asciidoc-out
-  HTML_FILES=$(echo $GITHUB_WORKSPACE/asciidoc-html/**/*)
-  for input_file in $HTML_FILES; do 
-    DIRNAME=$(dirname $input_file)
-    FILENAME=$(basename $input_file)
-    OUTPUT_PDF="${DIRNAME/asciidoc-html/asciidoc-out}/${FILENAME/.html/.pdf}"
-    echo "Convert ${input_file} to $OUTPUT_PDF"
-    wkhtmltopdf --enable-local-file-access $input_file $OUTPUT_PDF
-  done
-  
-else
-  COMMAND=$(echo "$ASCIIDOCTOR -R . -D $GITHUB_WORKSPACE/asciidoc-out -r asciidoctor-diagram -a mermaid-puppeteer-config=/mermaid/puppeteer-config.json -a source-highlighter@=rouge" $ASCIIDOCTOR_ARGS $INPUT_FILES)
-  echo "Running '$COMMAND'"
+COMMAND=$(echo "$ASCIIDOCTOR -R . -D $GITHUB_WORKSPACE/asciidoc-out -r asciidoctor-diagram -a mermaid-puppeteer-config=/mermaid/puppeteer-config.json -a source-highlighter@=rouge" $ASCIIDOCTOR_ARGS $INPUT_FILES)
+echo "Running '$COMMAND'"
 
-  # TEST env variable indicates we should be in testing mode (below).
-  mkdir $GITHUB_WORKSPACE/asciidoc-out
-  eval $COMMAND
-fi
+# TEST env variable indicates we should be in testing mode (below).
+mkdir $GITHUB_WORKSPACE/asciidoc-out
+eval $COMMAND
 OUTPUT=
 
 FILES=$(echo $GITHUB_WORKSPACE/asciidoc-out/**/*)
