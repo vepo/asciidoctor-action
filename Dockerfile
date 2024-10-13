@@ -3,8 +3,6 @@ FROM ruby:3-alpine
 # download kindlegen and install it to /usr/bin
 RUN wget https://github.com/zzet/fp-docker/raw/master/kindlegen_linux_2.6_i386_v2_9.tar.gz -O - | tar -xzf - -C /usr/bin kindlegen
 
-RUN gem install asciidoctor asciidoctor-pdf asciidoctor-diagram asciidoctor-epub3 rouge asciimath asciidoctor-mathematical
-
 RUN apk add --no-cache \
       chromium \
       nss \
@@ -15,8 +13,10 @@ RUN apk add --no-cache \
       ttf-freefont \
       nodejs \
       npm \
+      cmake \
       bash
 
+RUN gem install asciidoctor asciidoctor-pdf asciidoctor-diagram asciidoctor-epub3 rouge asciimath asciidoctor-mathematical
 RUN mkdir /mermaid
 
 WORKDIR /mermaid
