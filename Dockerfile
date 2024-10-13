@@ -1,3 +1,4 @@
+FROM surnet/alpine-wkhtmltopdf:3.16.2-0.12.6-full as wkhtmltopdf
 FROM ruby:3-alpine
 
 # download kindlegen and install it to /usr/bin
@@ -15,8 +16,17 @@ RUN apk add --no-cache \
       ttf-freefont \
       nodejs \
       npm \
-      bash
+      bash \
+      libstdc++ \
+      libx11 \
+      libxrender \
+      libxext \
+      libssl1.1 \
+      fontconfig \
+      ttf-droid \
+      ttf-liberation
 
+COPY --from=wkhtmltopdf /bin/wkhtmltopdf /bin/libwkhtmltox.so /bin/
 RUN mkdir /mermaid
 
 WORKDIR /mermaid
