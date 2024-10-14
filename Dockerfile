@@ -14,6 +14,7 @@ RUN apk add --no-cache \
       nodejs \
       npm \
       cmake \
+      libxml2 \
       bash
 
 RUN gem install asciidoctor asciidoctor-pdf asciidoctor-diagram asciidoctor-epub3 rouge asciimath asciidoctor-mathematical
