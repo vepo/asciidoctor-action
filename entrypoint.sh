@@ -40,7 +40,8 @@ if [[ -z $INPUT_FILES ]]; then
   exit $EX_USAGE
 fi
 
-COMMAND=$(echo "$ASCIIDOCTOR -R . -D $GITHUB_WORKSPACE/asciidoc-out -r asciidoctor-diagram -a mermaid-puppeteer-config=/mermaid/puppeteer-config.json -a source-highlighter@=rouge" $ASCIIDOCTOR_ARGS $INPUT_FILES)
+#COMMAND=$(echo "$ASCIIDOCTOR -R . -D $GITHUB_WORKSPACE/asciidoc-out -r asciidoctor-diagram -a mermaid-puppeteer-config=/mermaid/puppeteer-config.json -a source-highlighter@=rouge" $ASCIIDOCTOR_ARGS $INPUT_FILES)
+COMMAND=$(echo "$ASCIIDOCTOR -R . -D $GITHUB_WORKSPACE/asciidoc-out -r asciidoctor-diagram -r asciidoctor-mathematical" $ASCIIDOCTOR_ARGS $INPUT_FILES)
 echo "Running '$COMMAND'"
 
 # TEST env variable indicates we should be in testing mode (below).
