@@ -14,8 +14,15 @@ RUN apk add --no-cache \
       nodejs \
       npm \
       cmake \
-      libxml2 \
-      bash
+      bash \
+      bison \
+      flex \
+      libffi-dev \
+      libxml2-dev \
+      gdk-pixbuf \
+      cairo \
+      pango \
+      lyx
 
 RUN gem install asciidoctor asciidoctor-pdf asciidoctor-diagram asciidoctor-epub3 rouge asciimath asciidoctor-mathematical
 RUN mkdir /mermaid
